@@ -12,7 +12,7 @@ module "vpc" {
   enable_vpn_gateway = var.vpn_gateway_enabled
 
   tags = {
-    Terraform = "true"
+    Terraform   = "true"
     Environment = local.environment
   }
 }

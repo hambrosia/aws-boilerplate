@@ -9,8 +9,8 @@ module "asg" {
 
   image_id        = var.ami_identifier
   instance_type   = "t2.micro"
-//  security_groups = ["sg-12345678"]
-//  load_balancers  = [module.elb.this_elb_id]
+  security_groups = [aws_security_group.private_sub_server.id]
+  load_balancers  = [module.elb.this_elb_id]
 
   ebs_block_device = [
     {

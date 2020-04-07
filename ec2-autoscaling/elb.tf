@@ -4,7 +4,7 @@ module "elb" {
   name = local.elb_name
 
   subnets         = module.vpc.public_subnets
-  security_groups = [module.vpc.default_security_group_id]
+  security_groups = [aws_security_group.public_elb.id]
   internal        = false
 
   listener = [
