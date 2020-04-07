@@ -25,7 +25,7 @@ variable "public_subnets" {
 }
 
 variable "nat_gateway_enabled" {
-  default = false
+  default = true
 }
 
 variable "vpn_gateway_enabled" {

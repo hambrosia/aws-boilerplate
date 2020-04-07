@@ -11,6 +11,7 @@ module "asg" {
   instance_type   = "t2.micro"
   security_groups = [aws_security_group.private_sub_server.id]
   load_balancers  = [module.elb.this_elb_id]
+  user_data       = file("launch_config_setup.sh")
 
   ebs_block_device = [
     {
