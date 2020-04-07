@@ -16,5 +16,5 @@ The current version has support for the following configurations:
 * Initialize Terraform in the directory of the template you want to deploy. `terraform init`
 * Before planning or applying, create a workspace with a name that indicates the purpose of the environment and the region it will be hosted in, e.g. `terraform workspace new sandbox-us-east-2`
 * Change any default values in the `vars.tf` file to correspond to your desired configuration. You can change the organization name, service name, default subnets, and more.
-* Apply into a sandbox account to test your configuration values.
+* Apply into a sandbox account to test your configuration values before deploying to your primary account. Ensure there are no conflicts or overlap with any existing resources.
  
