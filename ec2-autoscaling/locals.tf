@@ -8,4 +8,7 @@ locals {
     launch_name = "${var.service_name}-${terraform.workspace}-lc"
 
     scaling_name = "${var.service_name}-${terraform.workspace}-asg"
+
+    elb_name = "${var.service_name}-${terraform.workspace}-elb"
+
 }
