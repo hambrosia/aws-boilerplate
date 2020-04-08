@@ -52,7 +52,7 @@ variable "asg_min_size" {
 }
 
 variable "asg_max_size" {
-  default = 6
+  default = 3
 }
 
 variable "asg_desired" {
