@@ -1,0 +1,17 @@
+Parameters:
+  OrganizationName:
+    Description: Name of organization that owns the VPC.
+    Type: String
+    Default: "hambro"
+
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  TerraformStateBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      AccessControl: Private
+      BucketName: !Sub
+        - ${OrgName}-terraform-state
+        - {OrgName: !Ref OrganizationName}
+      VersioningConfiguration:
+        Status: Enabled

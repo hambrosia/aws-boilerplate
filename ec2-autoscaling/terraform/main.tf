@@ -4,7 +4,7 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = "hmcn-terraform-state"
+    bucket = "hambro-terraform-state"
     key    = "terraform/terraform.tfstate"
     region = "us-east-2"
   }
