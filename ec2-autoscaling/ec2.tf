@@ -8,7 +8,7 @@ module "asg" {
   lc_name = local.launch_name
 
   image_id        = var.ami_identifier
-  instance_type   = "t2.micro"
+  instance_type   = var.instance_type
   security_groups = [aws_security_group.private_sub_server.id]
   load_balancers  = [module.elb.this_elb_id]
   user_data       = file("launch_config_setup.sh")

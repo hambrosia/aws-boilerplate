@@ -33,6 +33,11 @@ variable "vpn_gateway_enabled" {
 }
 
 # EC2 Defaults
+
+variable "instance_type" {
+  default = "t2.nano"
+}
+
 variable "ebs_volume_size" {
   default = "10"
 }
