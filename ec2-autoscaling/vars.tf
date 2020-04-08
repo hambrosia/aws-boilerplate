@@ -58,3 +58,7 @@ variable "asg_max_size" {
 variable "asg_desired" {
   default = 3
 }
+
+variable "elb_healthcheck_target" {
+  default = "HTTP:80/index.html"
+}

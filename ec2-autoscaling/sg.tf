@@ -58,3 +58,4 @@ resource "aws_security_group_rule" "public_sub_elb_egress" {
   protocol                 = "tcp"
   source_security_group_id = aws_security_group.private_sub_server.id
 }
+
