@@ -1,6 +1,6 @@
 # General Defaults / Metadata
 variable "org_name" {
-  default = "hambrocorp"
+  default = "hambro"
 }
 
 variable "service_name" {
