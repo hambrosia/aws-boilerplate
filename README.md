@@ -8,9 +8,11 @@ This collection of customizable boilerplate files is intended to ease the setup 
 
 ## Current Features
 The current version has support for the following configurations:
-* VPC with public and private subnets.
-* High availability EC2 configuration with a customizable launch template and autoscaling group.
+* Three-tier VPC with public, private, and database subnets across three availability zones.
 * Customizable ELB in the public subnet.
+* High availability EC2 configuration with a customizable launch template and autoscaling group in private subnet.
+* RDS / Postgres in the database subnet.
+* Security groups to control traffic between resources in public, private, and database subnets.
 
 ## Usage
 * Confirm your default AWS region in `~/.aws/config`. This template uses `us-east-2` by default, but any region will work.
