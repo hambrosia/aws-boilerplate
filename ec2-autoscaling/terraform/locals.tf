@@ -20,4 +20,8 @@ locals {
 
   sg_name_private_rds = "secgr-${terraform.workspace}-private-rds"
 
+  # RDS
+  rds_db_name = "rds-${terraform.workspace}-${var.service_name}"
+
+  rds_username = "${var.org_name}-admin"
 }

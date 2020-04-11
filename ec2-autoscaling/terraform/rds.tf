@@ -1,48 +1,36 @@
 module "rds" {
   source     = "terraform-aws-modules/rds/aws"
   version    = "2.5.0"
-  identifier = "demodb-postgres"
+  identifier = local.rds_db_name
 
   engine            = "postgres"
-  engine_version    = "9.6.9"
-  instance_class    = "db.t2.large"
-  allocated_storage = 5
-  storage_encrypted = false
+  engine_version    = var.rds_pg_engine_version
+  instance_class    = var.rds_instance_class
+  allocated_storage = var.rds_storage
+  storage_encrypted = var.rds_encryption
 
-  # kms_key_id        = "arm:aws:kms:<region>:<account id>:key/<kms key id>"
-  name = "demodb"
+  name = local.rds_db_name
 
-  # NOTE: Do NOT use 'user' as the value for 'username' as it throws:
-  # "Error creating DB Instance: InvalidParameterValue: MasterUsername
-  # user cannot be used as it is a reserved word used by the engine"
-  username = "demouser"
-
-  password = "YourPwdShouldBeLongAndSecure!"
+  username = local.rds_username
+  password = var.rds_password
   port     = var.rds_port
 
   vpc_security_group_ids = [aws_security_group.db_sub_rds.id]
 
-  maintenance_window = "Mon:00:00-Mon:03:00"
-  backup_window      = "03:00-06:00"
+  maintenance_window = var.rds_maintenance_window
+  backup_window      = var.rds_backup_window
 
-  # disable backups to create DB faster
-  backup_retention_period = 0
+  backup_retention_period = var.rds_backup_retention_period
 
   tags = {
     Owner       = var.org_name
     Environment = local.environment
   }
 
-  # DB subnet group
   subnet_ids = module.vpc.database_subnets
 
-  # DB parameter group
-  family = "postgres9.6"
+  family = var.rds_db_parameter_group
 
-  # Snapshot name upon DB deletion
-  final_snapshot_identifier = "demodb"
-
-  create_monitoring_role = true
-
+  final_snapshot_identifier = local.rds_db_name
 
 }

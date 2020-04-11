@@ -72,3 +72,39 @@ variable "elb_healthcheck_target" {
 variable "rds_port" {
   default = "5432"
 }
+
+variable "rds_instance_class" {
+  default = "db.t2.large"
+}
+
+variable "rds_pg_engine_version" {
+  default = "9.6.9"
+}
+
+variable "rds_storage" {
+  default = 5
+}
+
+variable "rds_encryption" {
+  default = false
+}
+
+variable "rds_password" {
+  default = "MakeSureYourPasswordIsStrongAndManagedCorrectly"
+}
+
+variable "rds_maintenance_window" {
+  default = "Mon:00:00-Mon:03:00"
+}
+
+variable "rds_backup_window" {
+  default = "03:00-06:00"
+}
+
+variable "rds_backup_retention_period" {
+  default = 0
+}
+
+variable "rds_db_parameter_group" {
+  default = "postgres9.6"
+}
