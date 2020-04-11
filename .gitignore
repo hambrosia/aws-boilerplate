@@ -1,5 +1,5 @@
 # Local .terraform directories
-ec2-autoscaling/terraform/.terraform/*
+three-tier/terraform/.terraform/*
 
 # .tfstate files
 *.tfstate
