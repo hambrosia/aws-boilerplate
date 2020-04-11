@@ -59,3 +59,33 @@ resource "aws_security_group_rule" "public_sub_elb_egress" {
   source_security_group_id = aws_security_group.private_sub_server.id
 }
 
+# DB Subnet - RDS/Postgres
+resource "aws_security_group" "db_sub_rds" {
+  name        = local.sg_name_private_rds
+  description = "Allow HTTP inbound traffic from EC2 in private subnets, allow outbound to EC2 in private subnet"
+  vpc_id      = module.vpc.vpc_id
+  tags = {
+    Name = local.sg_name_private_rds
+  }
+}
+
+resource "aws_security_group_rule" "db_sub_rds_ingress" {
+  # Rules are separated from SG to avoid cyclical dependency with referenced source/destination SGs
+  description              = "Allow EC2 in private subnet to reach RDS in DB subnet"
+  security_group_id        = aws_security_group.db_sub_rds.id
+  type                     = "ingress"
+  from_port                = var.rds_port
+  to_port                  = var.rds_port
+  protocol                 = "tcp"
+  source_security_group_id = aws_security_group.private_sub_server.id
+}
+
+resource "aws_security_group_rule" "db_sub_rds_egress" {
+  description       = "Allow all outbound from RDS in DB subnet"
+  security_group_id = aws_security_group.db_sub_rds.id
+  type              = "egress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "all"
+  cidr_blocks       = ["0.0.0.0/0"]
+}

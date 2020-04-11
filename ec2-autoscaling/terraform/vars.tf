@@ -20,8 +20,12 @@ variable "private_subnets" {
   default = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
 }
 
-variable "public_subnets" {
+variable "db_subnets" {
   default = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
+}
+
+variable "public_subnets" {
+  default = ["10.0.201.0/24", "10.0.202.0/24", "10.0.203.0/24"]
 }
 
 variable "nat_gateway_enabled" {
@@ -61,4 +65,10 @@ variable "asg_desired" {
 
 variable "elb_healthcheck_target" {
   default = "HTTP:80/index.html"
+}
+
+# RDS Defaults
+
+variable "rds_port" {
+  default = "5432"
 }
